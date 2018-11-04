@@ -13,18 +13,22 @@ install:
 script:
   - echo "script $(node -v)"
   - echo foobar > foobar
-  - git add -A
-  - |
-    if [[ $(git status --porcelain) ]]; then
-      git config user.name "travis"
-      git config user.email "build@travis-ci.com"
-      git commit -m 'chore(build):changes from build'
-    fi
 after_success:
   - echo "after success $(node -v)"
 
 jobs:
   include:
+    - stage: "Push changes"
+      script:
+      - git status
+      - git add -A
+      - |
+        if [[ $(git status --porcelain) ]]; then
+          git config user.name "travis"
+          git config user.email "build@travis-ci.com"
+          git commit -m 'chore(build):changes from build'
+          exit 1
+        fi
     - stage: release 1
       node_js: "10"
       if: type = push AND branch = master
