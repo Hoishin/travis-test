@@ -22,12 +22,10 @@ after_success:
 jobs:
   include:
     - stage: release 1
-      script: echo "release 1 script"
       deploy:
         provider: script
         script: echo "release 1 deploy script"
     - stage: release 22
-      script: echo "release 22 script"
       deploy:
         provider: script
         script: echo "release 22 deploy script"
