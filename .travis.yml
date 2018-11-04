@@ -1,26 +1,22 @@
 sudo: false
 dist: trusty
 
-language: node_js
-node_js:
-- "8"
-- "10"
-- "11"
-
-before_install:
-- echo "before install $(node -v)"
-
-install:
-- echo "install $(node -v)"
-
-script:
-- echo "script $(node -v)"
-
-after_success:
-- echo "after success $(node -v)"
-
 jobs:
   include:
+    - stage: test
+      language: node_js
+      node_js:
+        - "8"
+        - "10"
+        - "11"
+      before_install:
+        - echo "before install $(node -v)"
+      install:
+        - echo "install $(node -v)"
+      script:
+        - echo "script $(node -v)"
+      after_success:
+        - echo "after success $(node -v)"
     - stage: release 1
       deploy:
         provider: script
