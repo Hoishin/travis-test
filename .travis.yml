@@ -13,6 +13,9 @@ before_install:
 install:
 - echo "install $(node -v)"
 
+script:
+- echo "script $(node -v)"
+
 after_success:
 - echo "after success $(node -v)"
 
