@@ -12,6 +12,14 @@ install:
   - echo "install $(node -v)"
 script:
   - echo "script $(node -v)"
+  - echo foobar > foobar
+  - git add -A
+  - |
+    if [[ $(git status --porcelain) ]]; then
+      git config user.name "travis"
+      git config user.email "build@travis-ci.com"
+      git commit -m 'chore(build):changes from build'
+    fi
 after_success:
   - echo "after success $(node -v)"
 
