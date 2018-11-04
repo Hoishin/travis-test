@@ -6,6 +6,8 @@ node_js:
   - "10"
   - "11"
 
+if: false
+
 before_install:
   - echo "before install $(node -v)"
 install:
