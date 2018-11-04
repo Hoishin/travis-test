@@ -13,11 +13,6 @@ after_success:
 
 jobs:
   include:
-    - stage: test
-      node_js:
-        - "8"
-        - "10"
-        - "11"
     - stage: release 1
       script: skip
       deploy:
