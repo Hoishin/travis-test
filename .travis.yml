@@ -28,6 +28,7 @@ jobs:
           git config user.name "travis"
           git config user.email "build@travis-ci.com"
           git commit -m 'chore(build):changes from build'
+          git push
           exit 1
         fi
     - stage: release 1
