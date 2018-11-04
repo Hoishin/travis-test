@@ -18,21 +18,8 @@ after_success:
 
 jobs:
   include:
-    - stage: "Push changes"
-      script:
-      - echo foobar > foobar
-      - git branch
-      - git remote -v
-      - git status
-      - git add -A
-      - |
-        if [[ $(git status --porcelain) ]]; then
-          git config user.name "travis"
-          git config user.email "build@travis-ci.com"
-          git commit -m 'chore(build):changes from build'
-          git push origin ${TRAVIS_BRANCH}
-          exit 1
-        fi
+    - node_js: "8"
+    - node_js: "10"
     - stage: release 1
       node_js: "10"
       if: type = push AND branch = master
