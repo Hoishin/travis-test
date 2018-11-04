@@ -6,7 +6,7 @@ node_js:
   - "10"
   - "11"
 
-if: false
+if: branch = hgoeeeeeeeeeeeeeeeeeeee
 
 before_install:
   - echo "before install $(node -v)"
