@@ -18,11 +18,15 @@ after_success:
 jobs:
   include:
     - stage: release 1
+      node_js: "10"
+      if: type = push AND branch = master AND tag IS blank
       script: skip
       deploy:
         provider: script
         script: echo "release 1 deploy script"
     - stage: release 22
+      node_js: "10"
+      if: type = push AND branch = master AND tag IS present
       script: skip
       deploy:
         provider: script
