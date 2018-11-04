@@ -20,6 +20,7 @@ jobs:
   include:
     - stage: "Push changes"
       script:
+      - echo foobar > foobar
       - git status
       - git add -A
       - |
